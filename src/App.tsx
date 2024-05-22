@@ -1,4 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import Navbar from "./components/Navbar";
+import { primaryColor } from "./consts/colors";
 
 function App() {
   return (
@@ -9,8 +11,8 @@ function App() {
           md: `"nav nav" "side main"`,
         }}
       >
-        <GridItem area="nav" bg="green">
-          navbar here
+        <GridItem area="nav" bg={primaryColor}>
+          <Navbar />
         </GridItem>
         <Show above="md">
           <GridItem area="side" bg="black">
