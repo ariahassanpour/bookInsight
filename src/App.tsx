@@ -1,6 +1,7 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import { primaryColor } from "./consts/colors";
+import BookGrid from "./components/BookGrid";
 
 function App() {
   return (
@@ -19,8 +20,8 @@ function App() {
             sidebar here
           </GridItem>
         </Show>
-        <GridItem area="main" bg="blue">
-          main content here
+        <GridItem area="main">
+          <BookGrid />
         </GridItem>
       </Grid>
     </>
