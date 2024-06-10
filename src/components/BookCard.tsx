@@ -1,5 +1,16 @@
-import { Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  HStack,
+  Heading,
+  Icon,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Book } from "../hooks/useBooks";
+import { FiFileText } from "react-icons/fi";
+import { Tooltip } from "@chakra-ui/react";
 interface Props {
   BookItem: Book;
 }
@@ -12,6 +23,21 @@ function BookCard(props: Props) {
       <CardBody>
         <Heading fontSize="2xl">{props.BookItem.title}</Heading>
         {props.BookItem.author_name}
+        <HStack justifyContent="space-between" alignSelf="end">
+          {props.BookItem.has_fulltext ? (
+            <Tooltip label="Has Full Text " fontSize="md">
+              <span>
+                <Icon as={FiFileText} size="100" />
+              </span>
+            </Tooltip>
+          ) : (
+            <Tooltip label="No Full Text " fontSize="md">
+              <span>
+                <Icon as={FiFileText} color="gray" />
+              </span>
+            </Tooltip>
+          )}
+        </HStack>
       </CardBody>
     </Card>
   );

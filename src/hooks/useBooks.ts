@@ -5,7 +5,8 @@ export interface Book {
     title: string;
     author_name: string[];
     key: string;
-    cover_i: string
+    cover_i: string;
+    has_fulltext: boolean
   }
   interface FetchBooksResponse {
     query: string;
