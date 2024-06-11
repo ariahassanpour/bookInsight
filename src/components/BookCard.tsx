@@ -11,6 +11,7 @@ import {
 import { Book } from "../hooks/useBooks";
 import { FiFileText } from "react-icons/fi";
 import { Tooltip } from "@chakra-ui/react";
+import BookLangLabel from "./BookLangLabel";
 interface Props {
   BookItem: Book;
 }
@@ -37,6 +38,7 @@ function BookCard(props: Props) {
               </span>
             </Tooltip>
           )}
+          <BookLangLabel langs={props.BookItem.language} />
         </HStack>
       </CardBody>
     </Card>
