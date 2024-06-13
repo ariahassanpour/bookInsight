@@ -4,7 +4,7 @@ import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 
 function BookGrid() {
-  const { books, error, isLoading } = useBooks();
+  const { data, error, isLoading } = useBooks();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8]; //for loading skeletons
   return (
     <>
@@ -16,7 +16,7 @@ function BookGrid() {
       >
         {isLoading &&
           skeletons.map((skeleton) => <BookCardSkeleton key={skeleton} />)}
-        {books.map((bk) => (
+        {data.map((bk) => (
           <BookCard key={bk.key} BookItem={bk} />
         ))}
       </SimpleGrid>

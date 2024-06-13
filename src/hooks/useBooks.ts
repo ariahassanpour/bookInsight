@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../services/api-client";
+import useData from "./useData";
 
 export interface Book {
     title: string;
@@ -14,28 +13,5 @@ export interface Book {
     works: Book[];
   }
 
-const useBooks=()=>{
-  const [books, setBooks] = useState<Book[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading]= useState(false)
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true)
-    apiClient
-      .get<FetchBooksResponse>("/trending/daily.json", {
-        signal: controller.signal,
-      })
-      .then((res) => {setBooks(res.data.works)
-        setLoading(false)
-      })
-      
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false)
-      });
-    return () => controller.abort();
-  },[]);
-  return {books,error,isLoading}
-}
+const useBooks=()=>useData<Book>("/trending/daily.json")
 export default useBooks
