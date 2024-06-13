@@ -1,0 +1,1 @@
+export const bookSubjects=['All','Arts','Animals','Fiction','Science & Mathematics', 'Business & Finance', "Children's", 'History','Health & Wellness', 'Biography' , 'Social Sciences', 'Places', 'TextBooks']
