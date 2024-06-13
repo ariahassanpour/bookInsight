@@ -1,11 +1,16 @@
+import { List, ListItem, Text } from "@chakra-ui/react";
 import { bookSubjects } from "../consts/subjects";
 const Subjects = () => {
   return (
-    <ul>
+    <List>
       {bookSubjects.map((subj) => (
-        <li key={subj}>{subj}</li>
+        <Text fontSize="lg">
+          <ListItem key={subj} paddingY="5px">
+            {subj}
+          </ListItem>
+        </Text>
       ))}
-    </ul>
+    </List>
   );
 };
 
