@@ -12,6 +12,7 @@ import { Book } from "../hooks/useBooks";
 import { FiFileText } from "react-icons/fi";
 import { Tooltip } from "@chakra-ui/react";
 import BookLangLabel from "./BookLangLabel";
+import BookFullTextLabel from "./BookFullTextLabel";
 interface Props {
   BookItem: Book;
 }
@@ -31,19 +32,7 @@ function BookCard(props: Props) {
           : props.BookItem.author_name}
 
         <HStack justifyContent="space-between" alignSelf="end">
-          {props.BookItem.has_fulltext ? (
-            <Tooltip label="Has Full Text " fontSize="md">
-              <span>
-                <Icon as={FiFileText} size="100" />
-              </span>
-            </Tooltip>
-          ) : (
-            <Tooltip label="No Full Text " fontSize="md">
-              <span>
-                <Icon as={FiFileText} color="gray" />
-              </span>
-            </Tooltip>
-          )}
+          <BookFullTextLabel hasFullText={props.BookItem.has_fulltext} />
           <BookLangLabel langs={props.BookItem.language} />
         </HStack>
       </CardBody>

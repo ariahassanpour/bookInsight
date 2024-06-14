@@ -19,7 +19,7 @@ const BookLangLabel = ({ langs }: Props) => {
       fullList = fullList.substring(0, fullList.length - 2);
   }
   return (
-    <Tooltip label={fullList}>
+    <Tooltip label={"available languages: " + fullList}>
       <Badge paddingX={2} fontSize={12} borderRadius="5px">
         {shortList}
       </Badge>

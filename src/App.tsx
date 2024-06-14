@@ -27,7 +27,10 @@ function App() {
         </GridItem>
         <Show above="md">
           <GridItem area="side" bg="black" paddingX="5">
-            <Subjects onSelectSubject={(subj) => setSelectedSubject(subj)} />
+            <Subjects
+              onSelectSubject={(subj) => setSelectedSubject(subj)}
+              selectedSubject={selectedSubject}
+            />
           </GridItem>
         </Show>
         <GridItem area="main">
