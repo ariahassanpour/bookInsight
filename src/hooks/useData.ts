@@ -6,7 +6,7 @@ import apiClient, { CanceledError } from "../services/api-client";
     works: T[];
   }
 
-const useData=<T>(endpoint: string)=>{
+const useData=<T>(endpoint: string, dependencies?:any[])=>{
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading]= useState(false)
@@ -27,7 +27,7 @@ const useData=<T>(endpoint: string)=>{
         setLoading(false)
       });
     return () => controller.abort();
-  },[]);
+  },dependencies?[...dependencies]:[]);
   return {data,error,isLoading}
 }
 export default useData

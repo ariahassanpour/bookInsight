@@ -3,8 +3,13 @@ import Navbar from "./components/Navbar";
 import { primaryColor } from "./consts/colors";
 import BookGrid from "./components/BookGrid";
 import Subjects from "./components/Subjects";
+import { useState } from "react";
+import { Subject, bookSubjects } from "./consts/subjects";
 
 function App() {
+  const [selectedSubject, setSelectedSubject] = useState<Subject>(
+    bookSubjects[0]
+  );
   return (
     <>
       <Grid
@@ -22,11 +27,11 @@ function App() {
         </GridItem>
         <Show above="md">
           <GridItem area="side" bg="black" paddingX="5">
-            <Subjects />
+            <Subjects onSelectSubject={(subj) => setSelectedSubject(subj)} />
           </GridItem>
         </Show>
         <GridItem area="main">
-          <BookGrid />
+          <BookGrid selectedSubject={selectedSubject} />
         </GridItem>
       </Grid>
     </>

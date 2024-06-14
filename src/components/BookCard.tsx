@@ -16,14 +16,20 @@ interface Props {
   BookItem: Book;
 }
 function BookCard(props: Props) {
-  const src =
-    "https://covers.openlibrary.org/b/ID/" + props.BookItem.cover_i + "-M.jpg";
+  const src = props.BookItem.cover_i
+    ? "https://covers.openlibrary.org/b/ID/" + props.BookItem.cover_i + "-M.jpg"
+    : "https://covers.openlibrary.org/b/ID/" +
+      props.BookItem.cover_id +
+      "-M.jpg";
   return (
     <Card borderRadius={10} overflow="hidden">
       <Image src={src} />
       <CardBody>
         <Heading fontSize="2xl">{props.BookItem.title}</Heading>
-        {props.BookItem.author_name}
+        {props.BookItem.authors
+          ? props.BookItem.authors[0].name
+          : props.BookItem.author_name}
+
         <HStack justifyContent="space-between" alignSelf="end">
           {props.BookItem.has_fulltext ? (
             <Tooltip label="Has Full Text " fontSize="md">
