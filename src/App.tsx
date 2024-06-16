@@ -5,11 +5,14 @@ import BookGrid from "./components/BookGrid";
 import Subjects from "./components/Subjects";
 import { useState } from "react";
 import { Subject, bookSubjects } from "./consts/subjects";
+import BookGridLimitSelector from "./components/BookGridLimitSelector";
+import { limitsList } from "./consts/limits";
 
 function App() {
   const [selectedSubject, setSelectedSubject] = useState<Subject>(
     bookSubjects[0]
   );
+  const [selectedLimit, setSelectedLimit] = useState(limitsList[2]);
   return (
     <>
       <Grid
@@ -34,7 +37,11 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <BookGrid selectedSubject={selectedSubject} />
+          <BookGridLimitSelector
+            selectedLimit={selectedLimit}
+            setSelectedLimit={setSelectedLimit}
+          />
+          <BookGrid selectedSubject={selectedSubject} limit={selectedLimit} />
         </GridItem>
       </Grid>
     </>

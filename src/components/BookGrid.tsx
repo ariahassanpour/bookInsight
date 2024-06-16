@@ -6,10 +6,14 @@ import { Subject } from "../consts/subjects";
 
 interface Props {
   selectedSubject: Subject;
+  limit: number;
 }
 
 function BookGrid(props: Props) {
-  const { data, error, isLoading } = useBooks(props.selectedSubject);
+  const { data, error, isLoading } = useBooks(
+    props.selectedSubject,
+    props.limit
+  );
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8]; //for loading skeletons
   return (
     <>

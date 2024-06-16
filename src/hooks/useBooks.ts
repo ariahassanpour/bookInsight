@@ -21,5 +21,5 @@ export interface Book {
     works: Book[];
   }
 
-const useBooks=(subject: Subject)=>useData<Book>(subject.endpoint, [subject?.id])
+const useBooks=(subject: Subject, limit:number)=>useData<Book>(subject.endpoint, {limit:limit}, [subject?.id, limit])
 export default useBooks

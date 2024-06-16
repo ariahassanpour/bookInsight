@@ -6,15 +6,17 @@ import apiClient, { CanceledError } from "../services/api-client";
     works: T[];
   }
 
-const useData=<T>(endpoint: string, dependencies?:any[])=>{
+const useData=<T>(endpoint: string, params?:{}, dependencies?:any[])=>{
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading]= useState(false)
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true)
+    setError("")
     apiClient
       .get<FetchResponse<T>>(endpoint, {
+        params: params,
         signal: controller.signal,
       })
       .then((res) => {setData(res.data.works)
