@@ -8,11 +8,16 @@ import { Subject, bookSubjects } from "./consts/subjects";
 import BookGridLimitSelector from "./components/BookGridLimitSelector";
 import { limitsList } from "./consts/limits";
 
+export interface BookQuery {
+  subject: Subject;
+  limit: number;
+}
+
 function App() {
-  const [selectedSubject, setSelectedSubject] = useState<Subject>(
-    bookSubjects[0]
-  );
-  const [selectedLimit, setSelectedLimit] = useState(limitsList[2]);
+  const [bookQuery, setBookQuery] = useState<BookQuery>({
+    subject: bookSubjects[0],
+    limit: limitsList[2],
+  });
   return (
     <>
       <Grid
@@ -31,17 +36,21 @@ function App() {
         <Show above="md">
           <GridItem area="side" bg="black" paddingX="5">
             <Subjects
-              onSelectSubject={(subj) => setSelectedSubject(subj)}
-              selectedSubject={selectedSubject}
+              onSelectSubject={(subj) =>
+                setBookQuery({ ...bookQuery, subject: subj })
+              }
+              selectedSubject={bookQuery.subject}
             />
           </GridItem>
         </Show>
         <GridItem area="main">
           <BookGridLimitSelector
-            selectedLimit={selectedLimit}
-            setSelectedLimit={setSelectedLimit}
+            selectedLimit={bookQuery.limit}
+            setSelectedLimit={(lim) =>
+              setBookQuery({ ...bookQuery, limit: lim })
+            }
           />
-          <BookGrid selectedSubject={selectedSubject} limit={selectedLimit} />
+          <BookGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
     </>

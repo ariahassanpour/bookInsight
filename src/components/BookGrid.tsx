@@ -3,17 +3,14 @@ import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 import { Subject } from "../consts/subjects";
+import { BookQuery } from "../App";
 
 interface Props {
-  selectedSubject: Subject;
-  limit: number;
+  bookQuery: BookQuery;
 }
 
 function BookGrid(props: Props) {
-  const { data, error, isLoading } = useBooks(
-    props.selectedSubject,
-    props.limit
-  );
+  const { data, error, isLoading } = useBooks(props.bookQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8]; //for loading skeletons
   return (
     <>

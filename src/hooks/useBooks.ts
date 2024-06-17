@@ -1,3 +1,4 @@
+import { BookQuery } from "../App";
 import { Subject } from "../consts/subjects";
 import useData from "./useData";
 
@@ -21,5 +22,5 @@ export interface Book {
     works: Book[];
   }
 
-const useBooks=(subject: Subject, limit:number)=>useData<Book>(subject.endpoint, {limit:limit}, [subject?.id, limit])
+const useBooks=(bookQuery:BookQuery)=>useData<Book>(bookQuery.subject.endpoint, {limit:bookQuery.limit}, [bookQuery])
 export default useBooks
