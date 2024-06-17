@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Container, Grid, GridItem, Show } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import { primaryColor } from "./consts/colors";
 import BookGrid from "./components/BookGrid";
@@ -34,7 +34,7 @@ function App() {
           <Navbar />
         </GridItem>
         <Show above="md">
-          <GridItem area="side" bg="black" paddingX="5">
+          <GridItem area="side" paddingX="3">
             <Subjects
               onSelectSubject={(subj) =>
                 setBookQuery({ ...bookQuery, subject: subj })
@@ -44,12 +44,14 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <BookGridLimitSelector
-            selectedLimit={bookQuery.limit}
-            setSelectedLimit={(lim) =>
-              setBookQuery({ ...bookQuery, limit: lim })
-            }
-          />
+          <Container marginY={3} marginStart={0}>
+            <BookGridLimitSelector
+              selectedLimit={bookQuery.limit}
+              setSelectedLimit={(lim) =>
+                setBookQuery({ ...bookQuery, limit: lim })
+              }
+            />
+          </Container>
           <BookGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
