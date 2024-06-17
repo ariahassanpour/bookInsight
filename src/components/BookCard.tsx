@@ -13,15 +13,23 @@ import { FiFileText } from "react-icons/fi";
 import { Tooltip } from "@chakra-ui/react";
 import BookLangLabel from "./BookLangLabel";
 import BookFullTextLabel from "./BookFullTextLabel";
+import noCover from "../assets/No_Covers_Available.png";
 interface Props {
   BookItem: Book;
 }
 function BookCard(props: Props) {
-  const src = props.BookItem.cover_i
-    ? "https://covers.openlibrary.org/b/ID/" + props.BookItem.cover_i + "-M.jpg"
-    : "https://covers.openlibrary.org/b/ID/" +
+  let src = noCover;
+  if (props.BookItem.cover_i != null) {
+    src =
+      "https://covers.openlibrary.org/b/ID/" +
+      props.BookItem.cover_i +
+      "-M.jpg";
+  } else if (props.BookItem.cover_id != null) {
+    src =
+      "https://covers.openlibrary.org/b/ID/" +
       props.BookItem.cover_id +
       "-M.jpg";
+  }
   return (
     <Card borderRadius={10} overflow="hidden">
       <Image src={src} />
