@@ -34,15 +34,16 @@ function BookCard(props: Props) {
     <Card borderRadius={10} overflow="hidden">
       <Image src={src} />
       <CardBody>
-        <Heading fontSize="2xl">{props.BookItem.title}</Heading>
-        {props.BookItem.authors
-          ? props.BookItem.authors[0].name
-          : props.BookItem.author_name}
-
-        <HStack justifyContent="space-between" alignSelf="end">
+        <HStack justifyContent="space-between" alignSelf="end" marginBottom={4}>
           <BookFullTextLabel hasFullText={props.BookItem.has_fulltext} />
           <BookLangLabel langs={props.BookItem.language} />
         </HStack>
+        <Heading fontSize="2xl">{props.BookItem.title}</Heading>
+        <Text marginTop={1}>
+          {props.BookItem.authors
+            ? props.BookItem.authors[0].name
+            : props.BookItem.author_name}
+        </Text>
       </CardBody>
     </Card>
   );
