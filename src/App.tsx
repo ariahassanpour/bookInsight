@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Subject, bookSubjects } from "./consts/subjects";
 import BookGridLimitSelector from "./components/BookGridLimitSelector";
 import { limitsList } from "./consts/limits";
+import BookHeading from "./components/BookHeading";
 
 export interface BookQuery {
   subject: Subject;
@@ -51,6 +52,7 @@ function App() {
         </Show>
         <GridItem area="main">
           <Container marginY={3} marginStart={0}>
+            <BookHeading bookQuery={bookQuery} />
             <BookGridLimitSelector
               selectedLimit={bookQuery.limit}
               setSelectedLimit={(lim) =>
