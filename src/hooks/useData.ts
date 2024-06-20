@@ -3,7 +3,8 @@ import apiClient, { CanceledError } from "../services/api-client";
 
   interface FetchResponse<T> {
     query: string;
-    works: T[];
+    works: T[]; //when retrieving all books or by subject, the array of books is returned in this variable
+    docs: T[];//when searching for books, the array of books is returned in this variable
   }
 
 const useData=<T>(endpoint: string, params?:{}, dependencies?:any[])=>{
@@ -19,7 +20,8 @@ const useData=<T>(endpoint: string, params?:{}, dependencies?:any[])=>{
         params: params,
         signal: controller.signal,
       })
-      .then((res) => {setData(res.data.works)
+      .then((res) => {
+        res.data.works? setData(res.data.works):setData(res.data.docs)
         setLoading(false)
       })
       

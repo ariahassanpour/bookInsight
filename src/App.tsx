@@ -11,12 +11,14 @@ import { limitsList } from "./consts/limits";
 export interface BookQuery {
   subject: Subject;
   limit: number;
+  searchText: string;
 }
 
 function App() {
   const [bookQuery, setBookQuery] = useState<BookQuery>({
     subject: bookSubjects[0],
     limit: limitsList[2],
+    searchText: "",
   });
   return (
     <>
@@ -31,7 +33,11 @@ function App() {
         }}
       >
         <GridItem area="nav" bg={primaryColor}>
-          <Navbar />
+          <Navbar
+            onSearch={(searchTerm) =>
+              setBookQuery({ ...bookQuery, searchText: searchTerm })
+            }
+          />
         </GridItem>
         <Show above="md">
           <GridItem area="side" paddingX="3">
