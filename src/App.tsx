@@ -1,4 +1,11 @@
-import { Container, Grid, GridItem, Show } from "@chakra-ui/react";
+import {
+  Container,
+  Grid,
+  GridItem,
+  HStack,
+  Show,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import { primaryColor } from "./consts/colors";
 import BookGrid from "./components/BookGrid";
@@ -8,6 +15,7 @@ import { Subject, bookSubjects } from "./consts/subjects";
 import BookGridLimitSelector from "./components/BookGridLimitSelector";
 import { limitsList } from "./consts/limits";
 import BookHeading from "./components/BookHeading";
+import SearchedTerm from "./components/searchedTerm";
 
 export interface BookQuery {
   subject: Subject;
@@ -53,12 +61,22 @@ function App() {
         <GridItem area="main">
           <Container marginY={3} marginStart={0}>
             <BookHeading bookQuery={bookQuery} />
-            <BookGridLimitSelector
-              selectedLimit={bookQuery.limit}
-              setSelectedLimit={(lim) =>
-                setBookQuery({ ...bookQuery, limit: lim })
-              }
-            />
+            <HStack>
+              <BookGridLimitSelector
+                selectedLimit={bookQuery.limit}
+                setSelectedLimit={(lim) =>
+                  setBookQuery({ ...bookQuery, limit: lim })
+                }
+              />
+              {bookQuery.searchText && (
+                <SearchedTerm
+                  searchterm={bookQuery.searchText}
+                  onCancle={() =>
+                    setBookQuery({ ...bookQuery, searchText: "" })
+                  }
+                />
+              )}
+            </HStack>
           </Container>
           <BookGrid bookQuery={bookQuery} />
         </GridItem>

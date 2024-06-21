@@ -7,10 +7,10 @@ import {
   Image,
   Text,
   VStack,
+  useColorModeValue,
+  useTheme,
 } from "@chakra-ui/react";
 import { Book } from "../hooks/useBooks";
-import { FiFileText } from "react-icons/fi";
-import { Tooltip } from "@chakra-ui/react";
 import BookLangLabel from "./BookLangLabel";
 import BookFullTextLabel from "./BookFullTextLabel";
 import noCover from "../assets/No_Covers_Available.png";
@@ -31,7 +31,11 @@ function BookCard(props: Props) {
       "-M.jpg";
   }
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card
+      borderRadius={10}
+      overflow="hidden"
+      bg={useColorModeValue("gray.400", "primary.700")}
+    >
       <Image src={src} />
       <CardBody>
         <HStack justifyContent="space-between" alignSelf="end" marginBottom={4}>

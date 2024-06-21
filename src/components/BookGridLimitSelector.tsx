@@ -5,6 +5,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { limitsList } from "../consts/limits";
@@ -16,7 +17,11 @@ interface Props {
 const BookGridLimitSelector = (props: Props) => {
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton
+        as={Button}
+        rightIcon={<BsChevronDown />}
+        bg={useColorModeValue("gray.300", "gray.500")}
+      >
         Showing: {props.selectedLimit} results
       </MenuButton>
       <MenuList>
