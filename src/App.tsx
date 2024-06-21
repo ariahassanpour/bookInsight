@@ -16,6 +16,7 @@ import BookGridLimitSelector from "./components/BookGridLimitSelector";
 import { limitsList } from "./consts/limits";
 import BookHeading from "./components/BookHeading";
 import SearchedTerm from "./components/searchedTerm";
+import SubjectsDrawer from "./components/SubjectsDrawer";
 
 export interface BookQuery {
   subject: Subject;
@@ -46,6 +47,10 @@ function App() {
             onSearch={(searchTerm) =>
               setBookQuery({ ...bookQuery, searchText: searchTerm })
             }
+            onSelectSubject={(subj) =>
+              setBookQuery({ ...bookQuery, subject: subj })
+            }
+            selectedSubject={bookQuery.subject}
           />
         </GridItem>
         <Show above="md">
