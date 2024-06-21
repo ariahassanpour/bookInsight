@@ -10,6 +10,7 @@ import Subjects from "./components/Subjects";
 import { primaryColor } from "./consts/colors";
 import { limitsList } from "./consts/limits";
 import { Subject, bookSubjects } from "./consts/subjects";
+import React from "react";
 
 export interface BookQuery {
   subject: Subject;
