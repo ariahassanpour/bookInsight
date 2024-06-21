@@ -1,22 +1,15 @@
-import {
-  Container,
-  Grid,
-  GridItem,
-  HStack,
-  Show,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import Navbar from "./components/Navbar";
-import { primaryColor } from "./consts/colors";
-import BookGrid from "./components/BookGrid";
-import Subjects from "./components/Subjects";
+import { Container, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import { useState } from "react";
-import { Subject, bookSubjects } from "./consts/subjects";
+import BookGrid from "./components/BookGrid";
 import BookGridLimitSelector from "./components/BookGridLimitSelector";
-import { limitsList } from "./consts/limits";
 import BookHeading from "./components/BookHeading";
-import SearchedTerm from "./components/searchedTerm";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import SearchedTerm from "./components/SearchedTerm";
+import Subjects from "./components/Subjects";
+import { primaryColor } from "./consts/colors";
+import { limitsList } from "./consts/limits";
+import { Subject, bookSubjects } from "./consts/subjects";
 
 export interface BookQuery {
   subject: Subject;
