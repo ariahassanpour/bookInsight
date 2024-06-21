@@ -34,7 +34,6 @@ const Navbar = (props: Props) => {
         <Show below="md">
           <Button
             as={IconButton}
-            // size="sm"
             aria-label="Subjects Panel"
             icon={<RxHamburgerMenu size="md" />}
             onClick={onOpen}

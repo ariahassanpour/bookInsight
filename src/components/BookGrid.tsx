@@ -2,7 +2,6 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
-import { Subject } from "../consts/subjects";
 import { BookQuery } from "../App";
 
 interface Props {

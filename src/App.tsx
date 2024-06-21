@@ -16,7 +16,7 @@ import BookGridLimitSelector from "./components/BookGridLimitSelector";
 import { limitsList } from "./consts/limits";
 import BookHeading from "./components/BookHeading";
 import SearchedTerm from "./components/searchedTerm";
-import SubjectsDrawer from "./components/SubjectsDrawer";
+import Footer from "./components/footer";
 
 export interface BookQuery {
   subject: Subject;
@@ -34,8 +34,8 @@ function App() {
     <>
       <Grid
         templateAreas={{
-          base: `"nav" "main"`,
-          md: `"nav nav" "side main"`,
+          base: `"nav" "main" "foot"`,
+          md: `"nav nav" "side main" "foot foot"`,
         }}
         templateColumns={{
           base: "1fr",
@@ -84,6 +84,10 @@ function App() {
             </HStack>
           </Container>
           <BookGrid bookQuery={bookQuery} />
+        </GridItem>
+
+        <GridItem area="foot">
+          <Footer />
         </GridItem>
       </Grid>
     </>
